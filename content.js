@@ -1,9 +1,42 @@
-var selectedText = ""
+function makeEditableAndHighlight(colour) {
+    var range, sel = window.getSelection();
+    if (sel.rangeCount && sel.getRangeAt) {
+        range = sel.getRangeAt(0);
+    }
+    document.designMode = "on";
+    if (range) {
+        sel.removeAllRanges();
+        sel.addRange(range);
+    }
+    if (!document.execCommand("HiliteColor", false, colour)) {
+        document.execCommand("BackColor", false, colour);
+    }
+    document.designMode = "off";
+}
+
+function highlight(colour) {
+    var range, sel;
+    if (window.getSelection) {
+        try {
+            if (!document.execCommand("BackColor", false, colour)) {
+                makeEditableAndHighlight(colour);
+            }
+        } catch (ex) {
+            makeEditableAndHighlight(colour)
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.execCommand("BackColor", false, colour);
+    }
+}
+
 
 function getSelectionText() {
+    var selectedText = ""
     if (window.getSelection) {
         selectedText = window.getSelection().toString()
     }
+    return selectedText
 }
 
 function saveTextAsFile(data) {
@@ -51,20 +84,20 @@ function getFromLocal(retData) {
     });
 }
 
-
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message == "add_data") {
-            getSelectionText()
-            if (selectedText.length > 0) {
-                saveToLocal(selectedText)
+            theText = getSelectionText()
+            if (theText.length > 0) {
+                highlight('yellow')
+                saveToLocal(theText)
             } else {
                 alert("Please highlight some text")
             }
         } else if (request.message == "download_file") {
             getFromLocal(function (data) {
                 if (data) {
-                    chrome.storage.sync.remove(['data'],function () {
+                    chrome.storage.sync.remove(['data'], function () {
                         var error = chrome.runtime.lastError;
                         if (error) {
                             console.error(error);
@@ -76,5 +109,4 @@ chrome.runtime.onMessage.addListener(
                 }
             });
         }
-
     });
