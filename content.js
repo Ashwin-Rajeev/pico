@@ -1,7 +1,6 @@
 var selectedText = ""
 
 function getSelectionText() {
-    // var selectedText = ""
     if (window.getSelection) {
         selectedText = window.getSelection().toString()
     }
@@ -47,10 +46,7 @@ function saveToLocal(data) {
 function getFromLocal(retData) {
     var localData = ""
     chrome.storage.sync.get(['data'], function (result) {
-        // console.log(result.data)
         localData = result.data
-        // return result.data
-        console.log(localData)
         return retData(localData);
     });
 }
@@ -67,7 +63,6 @@ chrome.runtime.onMessage.addListener(
             }
         } else if (request.message == "download_file") {
             getFromLocal(function (data) {
-                console.log(data)
                 if (data) {
                     chrome.storage.sync.remove(['data'],function () {
                         var error = chrome.runtime.lastError;
