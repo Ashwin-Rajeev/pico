@@ -64,7 +64,7 @@ function destroyClickedElement(event) {
 function saveToLocal(data) {
     getFromLocal(function (localData) {
         if (localData) {
-            var newData = localData + "\r\n" + data
+            var newData = localData.concat('\r\n',data)
             chrome.storage.sync.set({ data: newData }, function () {
                 console.log('Value is set to a: ' + newData);
             });
