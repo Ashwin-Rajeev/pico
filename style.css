@@ -19,7 +19,7 @@ h3{
     color: #FFF;
     background-image: -webkit-linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
     background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
-    transition: .4s;
+    /* transition: .4s; */
     width: 95%;
     cursor: pointer;
 }
