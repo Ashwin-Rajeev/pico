@@ -21,5 +21,3 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("button2").addEventListener("click", downloadData);
     document.getElementById("button3").addEventListener("click", clearSelection);
 });
-
-

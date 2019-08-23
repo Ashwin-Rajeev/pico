@@ -12,7 +12,9 @@
                 "<all_urls>"
             ],
             "js": [
-                "content.js"
+                "data.js",
+                "content.js",
+                "helper.js"
             ]
         }
     ],
