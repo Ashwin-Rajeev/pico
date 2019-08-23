@@ -33,9 +33,18 @@ function highlight(colour) {
 
 function getSelectionText() {
     var selectedText = ""
+    var selection
     if (window.getSelection) {
-        selectedText = window.getSelection().toString()
+        selection = window.getSelection()
+        selectedText = selection.toString()
     }
+    var span = document.createElement('SPAN');
+    span.classList.add("mystyle-pico");
+    span.textContent = selectedText;
+
+    var range = selection.getRangeAt(0);
+    range.deleteContents();
+    range.insertNode(span);
     return selectedText
 }
 
@@ -64,7 +73,7 @@ function destroyClickedElement(event) {
 function saveToLocal(data) {
     getFromLocal(function (localData) {
         if (localData) {
-            var newData = localData.concat('\r\n',data)
+            var newData = localData.concat('\r\n', data)
             chrome.storage.sync.set({ data: newData }, function () {
                 console.log('Value is set to a: ' + newData);
             });
@@ -84,6 +93,23 @@ function getFromLocal(retData) {
     });
 }
 
+function clearSelectionHighlightColor() {
+    var elems = document.querySelectorAll("span.mystyle-pico");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        elems[index].outerHTML = elems[index].innerHTML
+    }
+}
+
+function clearLocalStorage() {
+    chrome.storage.sync.remove(['data'], function () {
+        var error = chrome.runtime.lastError;
+        if (error) {
+            console.error(error);
+        }
+    });
+}
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message == "add_data") {
@@ -97,16 +123,15 @@ chrome.runtime.onMessage.addListener(
         } else if (request.message == "download_file") {
             getFromLocal(function (data) {
                 if (data) {
-                    chrome.storage.sync.remove(['data'], function () {
-                        var error = chrome.runtime.lastError;
-                        if (error) {
-                            console.error(error);
-                        }
-                    });
+                    clearLocalStorage()
                     saveTextAsFile(data)
                 } else {
                     alert("Nothing selected to download")
                 }
             });
+        } else if (request.message == "clear_selection") {
+            console.log("Clear................")
+            clearLocalStorage()
+            clearSelectionHighlightColor()
         }
     });
