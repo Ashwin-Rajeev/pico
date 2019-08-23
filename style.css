@@ -1,0 +1,35 @@
+h3{
+    color:#4f84f8;
+    font-size: 20px;
+    margin: 4px 2px; 
+    text-align: center;
+}
+
+.square_btn{
+    display: inline-block;
+    border: none;
+    text-align: center;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 7px 20px;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+    background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+    transition: .4s;
+    width: 95%;
+    cursor: pointer;
+}
+body {
+    background: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+}
+
+.square_btn:hover{
+    background-image: -webkit-linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+    background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
