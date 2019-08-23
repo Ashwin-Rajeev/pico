@@ -21,15 +21,6 @@ function destroyClickedElement(event) {
     document.body.removeChild(event.target);
 }
 
-function addClassToElement(selection, selectedText) {
-    var span = document.createElement('SPAN');
-    span.classList.add("mystyle-pico");
-    span.textContent = selectedText;
-    var range = selection.getRangeAt(0);
-    range.deleteContents();
-    range.insertNode(span);
-}
-
 function getFromLocal(retData) {
     var localData = ""
     chrome.storage.sync.get(['data'], function(result) {
@@ -39,11 +30,12 @@ function getFromLocal(retData) {
 }
 
 function clearSelectionHighlightColor() {
-    var elems = document.querySelectorAll("span.mystyle-pico");
+    var elems = document.querySelectorAll('[style="background-color: yellow;"]');
+    console.log(elems)
     var index = 0,
         length = elems.length;
     for (; index < length; index++) {
-        elems[index].outerHTML = elems[index].innerHTML
+        elems[index].style.backgroundColor = ""
     }
 }
 

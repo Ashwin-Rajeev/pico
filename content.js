@@ -1,10 +1,9 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message == "add_data") {
-            selection = getSelectionText()
-            theText = selection.toString()
+            var selection = getSelectionText()
+            var theText = selection.toString()
             if (theText.length > 0) {
-                addClassToElement(selection, theText)
                 highlight('yellow')
                 saveToLocal(theText)
             } else {
@@ -23,4 +22,5 @@ chrome.runtime.onMessage.addListener(
             clearLocalStorage()
             clearSelectionHighlightColor()
         }
-    });
+    }
+);
