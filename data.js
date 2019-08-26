@@ -57,15 +57,14 @@ function highlight(colour) {
 function saveTextAsFile(data) {
     var textToWrite = data;
     var n = Math.floor(Date.now() / 1000)
-    typeBinder(function (mimeType,fileExtension){
-        console.log("hello",mimeType, fileExtension)
+    typeBinder(function (mimeType, fileExtension) {
         var textFileAsBlob = new Blob([textToWrite], {
             type: mimeType
         });
         var fileNameToSaveAs = n + fileExtension;
-    
+
         var downloadLink = document.createElement("a");
-    
+
         downloadLink.download = fileNameToSaveAs;
         downloadLink.innerHTML = "My Hidden Link";
         window.URL = window.URL || window.webkitURL;

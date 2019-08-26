@@ -31,7 +31,6 @@ function getFromLocal(retData) {
 
 function clearSelectionHighlightColor() {
     var elems = document.querySelectorAll('[style="background-color: yellow;"]');
-    console.log(elems)
     var index = 0,
         length = elems.length;
     for (; index < length; index++) {
@@ -52,19 +51,15 @@ function getFileTypeFromLocal(retData) {
     var localData = "";
     chrome.storage.sync.get(['type'], function (result) {
         localData = result.type
-        console.log("get local:", localData)
         return retData(localData);
     });
 }
 
 function typeBinder(type) {
     getFileTypeFromLocal(function (localData) {
-        console.log("send to compare", localData)
         if (localData == "txt") {
-            // console.log("comparison output:",MIME_TYPE,EXTENSION)
             return type(TEXT_DOC_MIME_TYPE, TEXT_FILE_EXTENSION)
         } else if (localData == "doc") {
-            // console.log("comparison output:",MIME_TYPE,EXTENSION)
             return type(WORD_DOC_MIME_TYPE, WORD_FILE_EXTENSION)
         }
     })

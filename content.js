@@ -19,7 +19,6 @@ chrome.runtime.onMessage.addListener(
                 }
             });
         } else if (request.message == "clear_selection") {
-            console.log("clearrrrrrrrrrrrrrrrrrrrr")
             clearLocalStorage()
             clearSelectionHighlightColor()
         } else if (request.message == "file_type_selection") {

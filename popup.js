@@ -20,7 +20,6 @@ function addFileType() {
     var file = document.getElementById("file");
     var value = file.options[file.selectedIndex].value;
     file.options[file.selectedIndex].selected = true;
-    console.log(value)
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { message: "file_type_selection", payload: value });
     });
