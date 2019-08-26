@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(
             var selection = getSelectionText()
             var theText = selection.toString()
             if (theText.length > 0) {
-                highlight('yellow')
+                highlight(HIGHLIGHT_COLOR)
                 saveToLocal(theText)
             } else {
                 alert("Please highlight some text")
@@ -22,6 +22,8 @@ chrome.runtime.onMessage.addListener(
             console.log("clearrrrrrrrrrrrrrrrrrrrr")
             clearLocalStorage()
             clearSelectionHighlightColor()
+        } else if (request.message == "file_type_selection") {
+            fileType(request.payload)
         }
     }
 );

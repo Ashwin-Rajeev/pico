@@ -15,7 +15,7 @@
                 "data.js",
                 "content.js",
                 "helper.js",
-                "constants.js"
+                "constant.js"
             ]
         }
     ],
