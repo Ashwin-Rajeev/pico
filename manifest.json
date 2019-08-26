@@ -14,7 +14,8 @@
             "js": [
                 "data.js",
                 "content.js",
-                "helper.js"
+                "helper.js",
+                "constants.js"
             ]
         }
     ],
@@ -49,6 +50,13 @@
                 "mac": "Command+Shift+S"
             },
             "description": "Download selected text"
+        },
+        "clear_data": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+X",
+                "mac": "Command+Shift+X"
+            },
+            "description": "Clear selected text"
         }
     }
 }

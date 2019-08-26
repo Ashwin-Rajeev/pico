@@ -19,6 +19,7 @@ chrome.runtime.onMessage.addListener(
                 }
             });
         } else if (request.message == "clear_selection") {
+            console.log("clearrrrrrrrrrrrrrrrrrrrr")
             clearLocalStorage()
             clearSelectionHighlightColor()
         }
