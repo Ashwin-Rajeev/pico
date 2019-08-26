@@ -1,16 +1,16 @@
 function saveToLocal(data) {
-    getFromLocal(function(localData) {
+    getFromLocal(function (localData) {
         if (localData) {
             var newData = localData.concat('\r\n', data)
             chrome.storage.sync.set({
                 data: newData
-            }, function() {
+            }, function () {
                 console.log('Value is set to a: ' + newData);
             });
         } else {
             chrome.storage.sync.set({
                 data: data
-            }, function() {
+            }, function () {
                 console.log('Value is set to b: ' + data);
             });
         }
@@ -23,7 +23,7 @@ function destroyClickedElement(event) {
 
 function getFromLocal(retData) {
     var localData = ""
-    chrome.storage.sync.get(['data'], function(result) {
+    chrome.storage.sync.get(['data'], function (result) {
         localData = result.data
         return retData(localData);
     });
@@ -31,7 +31,6 @@ function getFromLocal(retData) {
 
 function clearSelectionHighlightColor() {
     var elems = document.querySelectorAll('[style="background-color: yellow;"]');
-    console.log(elems)
     var index = 0,
         length = elems.length;
     for (; index < length; index++) {
@@ -40,10 +39,28 @@ function clearSelectionHighlightColor() {
 }
 
 function clearLocalStorage() {
-    chrome.storage.sync.remove(['data'], function() {
+    chrome.storage.sync.remove(['data'], function () {
         var error = chrome.runtime.lastError;
         if (error) {
             console.error(error);
         }
     });
+}
+
+function getFileTypeFromLocal(retData) {
+    var localData = "";
+    chrome.storage.sync.get(['type'], function (result) {
+        localData = result.type
+        return retData(localData);
+    });
+}
+
+function typeBinder(type) {
+    getFileTypeFromLocal(function (localData) {
+        if (localData == "txt") {
+            return type(TEXT_DOC_MIME_TYPE, TEXT_FILE_EXTENSION)
+        } else if (localData == "doc") {
+            return type(WORD_DOC_MIME_TYPE, WORD_FILE_EXTENSION)
+        }
+    })
 }

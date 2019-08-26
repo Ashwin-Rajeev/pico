@@ -1,54 +1,50 @@
 {
-    "name": "Pico-Save highlights",
-    "manifest_version": 2,
-    "version": "0.1",
-    "permissions": [
-        "tabs",
-        "storage"
-    ],
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "data.js",
-                "content.js",
-                "helper.js"
-            ]
-        }
-    ],
-    "background": {
-        "scripts": [
-            "background.js"
-        ]
-    },
-    "icons": {
-        "128": "images/icon.png"
-    },
-    "browser_action": {
-        "default_icon": {
-            "16": "images/icon_16.png",
-            "32": "images/icon_32.png",
-            "48": "images/icon_48.png",
-            "128": "images/icon_128.png"
-        },
-        "default_popup": "popup.html"
-    },
-    "commands": {
-        "add_data": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+A",
-                "mac": "Command+Shift+A"
-            },
-            "description": "Add selected text"
-        },
-        "download_data": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+S",
-                "mac": "Command+Shift+S"
-            },
-            "description": "Download selected text"
-        }
+  "name": "Pico-Save highlights",
+  "manifest_version": 2,
+  "version": "0.1",
+  "permissions": ["tabs", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["data.js", "content.js", "helper.js", "constant.js"]
     }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "128": "images/icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon_16.png",
+      "32": "images/icon_32.png",
+      "48": "images/icon_48.png",
+      "128": "images/icon_128.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "add_data": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+A",
+        "mac": "Command+Shift+A"
+      },
+      "description": "Add selected text"
+    },
+    "download_data": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Download selected text"
+    },
+    "clear_data": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X"
+      },
+      "description": "Clear selected text"
+    }
+  }
 }
