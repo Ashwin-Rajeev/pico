@@ -6,6 +6,22 @@ function getSelectionText() {
     return selection
 }
 
+function fileType(value) {
+    if (value == "txt") {
+        chrome.storage.sync.set({
+            type: value
+        }, function () {
+            console.log('Value is set to : ' + value);
+        });
+    } else if (value == "doc") {
+        chrome.storage.sync.set({
+            type: value
+        }, function () {
+            console.log('Value is set to : ' + value);
+        });
+    }
+}
+
 function makeEditableAndHighlight(colour) {
     var range, sel = window.getSelection();
     if (sel.rangeCount && sel.getRangeAt) {
@@ -41,19 +57,22 @@ function highlight(colour) {
 function saveTextAsFile(data) {
     var textToWrite = data;
     var n = Math.floor(Date.now() / 1000)
-    var textFileAsBlob = new Blob([textToWrite], {
-        type: 'text/plain'
-    });
-    var fileNameToSaveAs = n + ".txt";
-
-    var downloadLink = document.createElement("a");
-
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = "My Hidden Link";
-    window.URL = window.URL || window.webkitURL;
-    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
+    typeBinder(function (mimeType,fileExtension){
+        console.log("hello",mimeType, fileExtension)
+        var textFileAsBlob = new Blob([textToWrite], {
+            type: mimeType
+        });
+        var fileNameToSaveAs = n + fileExtension;
+    
+        var downloadLink = document.createElement("a");
+    
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "My Hidden Link";
+        window.URL = window.URL || window.webkitURL;
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    })
 }

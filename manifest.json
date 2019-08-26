@@ -14,7 +14,8 @@
             "js": [
                 "data.js",
                 "content.js",
-                "helper.js"
+                "helper.js",
+                "constant.js"
             ]
         }
     ],
