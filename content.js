@@ -22,5 +22,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     clearSelectionHighlightColor();
   } else if (request.message == "file_type_selection") {
     fileType(request.payload);
+  } else if (request.message == "get_selected_file_type") {
+    getFileTypeFromLocal(function(val) {
+      if (val) {
+        sendResponse({ type: val });
+      }
+    });
   }
+  return true;
 });
