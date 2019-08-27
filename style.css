@@ -19,7 +19,6 @@ h3 {
   color: #fff;
   background-image: -webkit-linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
   background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
-  /* transition: .4s; */
   width: 95%;
   cursor: pointer;
 }
@@ -32,4 +31,37 @@ body {
 .square_btn:hover {
   background-image: -webkit-linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
   background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
+
+.selection-style {
+  display: inline-block;
+  border: none;
+  text-align: center;
+  padding: 0.5em;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 10px;
+  padding: 7px 20px;
+  color: #4f84f8;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(45deg, #fdfdfd 0%, #b0c9ff 100%);
+}
+
+.selection-style:hover {
+  background-image: -webkit-linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+  background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
+.option-style:hover {
+  color: #4f84f8;
+}
+
+.file-type {
+  text-align: center;
+  font-weight: bold;
+  color: #4f84f8;
+}
+#active-file-type {
+  color: chocolate;
 }

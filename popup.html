@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html>
+  <head></head>
+  <script src="popup.js"></script>
+  <link rel="stylesheet" href="style.css" />
 
-<head></head>
-<script src="popup.js"></script>
-<link rel="stylesheet" href="style.css" />
+  <body>
+    <h3>Pico</h3>
 
-<body>
-  <h3>Pico</h3>
-
-  <select id="file">
-    <option style="display:none;" selected>Select File Type</option>
-    <option value="txt">Text Document</option>
-    <option value="doc">Word Document</option>
-    <option value="odt">OpenOffice Document</option>
-  </select>
-
-
-
-  <input class="square_btn" id="button1" type="button" value="Add text"
-    title="Add selected text for saving into a file" />
-  <input class="square_btn" id="button3" type="button" value="Clear"
-    title="Clear all selections within the current page" />
-  <input class="square_btn" id="button2" type="button" value="Download"
-    title="Download selected texts in specific file type" />
-</body>
-
+    <select class="selection-style" id="file">
+      <option class="option-style" style="display:none;"
+        >Select File Type</option
+      >
+      <option class="option-style" value="txt">Text Document</option>
+      <option class="option-style" value="doc">Word Document</option>
+      <option class="option-style" value="odt">OpenOffice Document</option>
+    </select>
+    <div class="file-type">
+      <p>Active File Type : <span id="active-file-type"></span></p>
+    </div>
+    <input
+      class="square_btn"
+      id="button1"
+      type="button"
+      value="Add text"
+      title="Add selected text for saving into a file"
+    />
+    <input
+      class="square_btn"
+      id="button3"
+      type="button"
+      value="Clear"
+      title="Clear all selections within the current page"
+    />
+    <input
+      class="square_btn"
+      id="button2"
+      type="button"
+      value="Download"
+      title="Download selected texts in specific file type"
+    />
+  </body>
 </html>
