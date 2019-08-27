@@ -2,7 +2,7 @@ function saveToLocal(data) {
   getFromLocal(function(localData) {
     if (localData) {
       var newData = localData.concat("\r\n", data);
-      chrome.storage.sync.set(
+      chrome.storage.local.set(
         {
           data: newData
         },
@@ -11,7 +11,7 @@ function saveToLocal(data) {
         }
       );
     } else {
-      chrome.storage.sync.set(
+      chrome.storage.local.set(
         {
           data: data
         },
@@ -29,7 +29,7 @@ function destroyClickedElement(event) {
 
 function getFromLocal(retData) {
   var localData = "";
-  chrome.storage.sync.get(["data"], function(result) {
+  chrome.storage.local.get(["data"], function(result) {
     localData = result.data;
     return retData(localData);
   });
@@ -45,7 +45,7 @@ function clearSelectionHighlightColor() {
 }
 
 function clearLocalStorage() {
-  chrome.storage.sync.remove(["data"], function() {
+  chrome.storage.local.remove(["data"], function() {
     var error = chrome.runtime.lastError;
     if (error) {
       console.error(error);
@@ -55,7 +55,7 @@ function clearLocalStorage() {
 
 function getFileTypeFromLocal(retData) {
   var localData = "";
-  chrome.storage.sync.get(["type"], function(result) {
+  chrome.storage.local.get(["type"], function(result) {
     localData = result.type;
     return retData(localData);
   });

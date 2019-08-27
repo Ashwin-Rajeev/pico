@@ -8,7 +8,7 @@ function getSelectionText() {
 
 function fileType(value) {
   if (value == "txt") {
-    chrome.storage.sync.set(
+    chrome.storage.local.set(
       {
         type: value
       },
@@ -17,7 +17,7 @@ function fileType(value) {
       }
     );
   } else if (value == "doc") {
-    chrome.storage.sync.set(
+    chrome.storage.local.set(
       {
         type: value
       },
@@ -26,7 +26,7 @@ function fileType(value) {
       }
     );
   } else if (value == "odt") {
-    chrome.storage.sync.set(
+    chrome.storage.local.set(
       {
         type: value
       },
