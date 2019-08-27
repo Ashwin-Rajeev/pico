@@ -6,11 +6,11 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["data.js", "content.js", "helper.js", "constant.js"]
+      "js": ["src/data.js", "src/content.js", "src/helper.js", "src/constant.js"]
     }
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["src/background.js"]
   },
   "icons": {
     "128": "images/icon.png"
@@ -22,7 +22,7 @@
       "48": "images/icon_48.png",
       "128": "images/icon_128.png"
     },
-    "default_popup": "popup.html"
+    "default_popup": "views/popup.html"
   },
   "commands": {
     "add_data": {
