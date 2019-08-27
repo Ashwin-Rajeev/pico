@@ -19,6 +19,12 @@ function fileType(value) {
         }, function () {
             console.log('Value is set to : ' + value);
         });
+    } else if (value == "odt") {
+        chrome.storage.sync.set({
+            type: value
+        }, function () {
+            console.log('Value is set to : ' + value);
+        });
     }
 }
 
@@ -58,7 +64,7 @@ function saveTextAsFile(data) {
     var textToWrite = data;
     var n = Math.floor(Date.now() / 1000)
     typeBinder(function (mimeType, fileExtension) {
-        var textFileAsBlob = new Blob([textToWrite], {
+        var FileAsBlob = new Blob([textToWrite], {
             type: mimeType
         });
         var fileNameToSaveAs = n + fileExtension;
@@ -68,7 +74,7 @@ function saveTextAsFile(data) {
         downloadLink.download = fileNameToSaveAs;
         downloadLink.innerHTML = "My Hidden Link";
         window.URL = window.URL || window.webkitURL;
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.href = window.URL.createObjectURL(FileAsBlob);
         downloadLink.onclick = destroyClickedElement;
         downloadLink.style.display = "none";
         document.body.appendChild(downloadLink);
