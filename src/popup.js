@@ -30,22 +30,20 @@ function addFileType() {
 }
 
 function getFileType() {
+  var file = document.getElementById("file");
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
       { message: "get_selected_file_type" },
       function(response) {
         if (response.type == "txt") {
-          document.getElementById("active-file-type").innerHTML =
-            "Text document";
+          file.options[1].selected = true;
         } else if (response.type == "doc") {
-          document.getElementById("active-file-type").innerHTML =
-            "Word document";
+          file.options[2].selected = true;
         } else if (response.type == "odt") {
-          document.getElementById("active-file-type").innerHTML =
-            "OpenOffice document";
+          file.options[3].selected = true;
         } else {
-          document.getElementById("active-file-type").innerHTML = "empty";
+          file.options[0].selected = true;
         }
       }
     );
