@@ -11,22 +11,20 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   } else if (request.message == "download_file") {
     getFromLocal(function(data) {
       if (data) {
-        clearLocalStorage();
+        clearLocalStorage("data");
         saveTextAsFile(data);
       } else {
         alert("Nothing selected to download");
       }
     });
   } else if (request.message == "clear_selection") {
-    clearLocalStorage();
+    clearLocalStorage("data");
     clearSelectionHighlightColor();
   } else if (request.message == "file_type_selection") {
     fileType(request.payload);
   } else if (request.message == "get_selected_file_type") {
     getFileTypeFromLocal(function(val) {
-      if (val) {
         sendResponse({ type: val });
-      }
     });
   }
   return true;
