@@ -44,8 +44,8 @@ function clearSelectionHighlightColor() {
   }
 }
 
-function clearLocalStorage() {
-  chrome.storage.local.remove(["data"], function() {
+function clearLocalStorage(key) {
+  chrome.storage.local.remove([key], function() {
     var error = chrome.runtime.lastError;
     if (error) {
       console.error(error);
