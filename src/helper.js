@@ -69,6 +69,8 @@ function typeBinder(type) {
       return type(WORD_DOC_MIME_TYPE, WORD_FILE_EXTENSION);
     } else if (localData == "odt") {
       return type(OPEN_OFFICE_DOC_MIME_TYPE, OPEN_OFFICE_FILE_EXTENSION);
+    } else {
+      return type(TEXT_DOC_MIME_TYPE, TEXT_FILE_EXTENSION);
     }
   });
 }
