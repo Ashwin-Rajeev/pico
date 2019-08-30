@@ -36,14 +36,18 @@ function getFileType() {
       tabs[0].id,
       { message: "get_selected_file_type" },
       function(response) {
-        if (response.type == "txt") {
-          file.options[1].selected = true;
-        } else if (response.type == "doc") {
-          file.options[2].selected = true;
-        } else if (response.type == "odt") {
-          file.options[3].selected = true;
+        if(chrome.runtime.lastError) {
+          console.log("Error")
         } else {
-          file.options[0].selected = true;
+          if (response.type == "txt") {
+            file.options[1].selected = true;
+          } else if (response.type == "doc") {
+            file.options[2].selected = true;
+          } else if (response.type == "odt") {
+            file.options[3].selected = true;
+          } else {
+            file.options[0].selected = true;
+          }
         }
       }
     );

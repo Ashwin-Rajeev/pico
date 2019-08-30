@@ -11,8 +11,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   } else if (request.message == "download_file") {
     getFromLocal(function(data) {
       if (data) {
-        clearLocalStorage("data");
         saveTextAsFile(data);
+        clearLocalStorage("data");
       } else {
         alert("Nothing selected to download");
       }
