@@ -91,3 +91,12 @@ function saveTextAsFile(data) {
     downloadLink.click();
   });
 }
+
+function formatData(data){
+  var formattedData = ""
+  for(var key in data) {
+    var value = data[key];
+    formattedData = formattedData + "\r\n" +value
+  }
+  return formattedData
+}

@@ -45,6 +45,13 @@
         "mac": "Command+Shift+X"
       },
       "description": "Clear selected text"
+    },
+    "clear_specific": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z"
+      },
+      "description": "Undo selected text"
     }
   }
 }
