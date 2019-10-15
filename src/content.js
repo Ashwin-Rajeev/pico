@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   } else if (request.message == "download_file") {
     getFromLocal(function(data) {
-      if (data) {
+      if ((typeof data === "object") && Object.keys(data).length) {
         var formattedData = formatData(data);
         saveTextAsFile(formattedData);
         clearLocalStorage("data");
