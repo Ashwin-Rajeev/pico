@@ -7,7 +7,7 @@ function getSelectionText() {
 }
 
 function fileType(value) {
-  if (value == "txt") {
+  if (value === "txt") {
     chrome.storage.local.set(
       {
         type: value
@@ -16,7 +16,7 @@ function fileType(value) {
         console.log("Value is set to : " + value);
       }
     );
-  } else if (value == "doc") {
+  } else if (value === "doc") {
     chrome.storage.local.set(
       {
         type: value
@@ -25,7 +25,7 @@ function fileType(value) {
         console.log("Value is set to : " + value);
       }
     );
-  } else if (value == "odt") {
+  } else if (value === "odt") {
     chrome.storage.local.set(
       {
         type: value

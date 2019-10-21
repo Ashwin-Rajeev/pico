@@ -39,11 +39,11 @@ function getFileType() {
         if(chrome.runtime.lastError) {
           console.log("Error")
         } else {
-          if (response.type == "txt") {
+          if (response.type === "txt") {
             file.options[1].selected = true;
-          } else if (response.type == "doc") {
+          } else if (response.type === "doc") {
             file.options[2].selected = true;
-          } else if (response.type == "odt") {
+          } else if (response.type === "odt") {
             file.options[3].selected = true;
           } else {
             file.options[0].selected = true;
