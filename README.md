@@ -9,9 +9,9 @@
     Save highlights
     <br>
     <br>
-    <a href="https://github.com/raj-kiran-p/regex_engine/issues">Report Bug</a>
+    <a href="https://github.com/Ashwin-Rajeev/pico/issues">Report Bug</a>
     ·
-    <a href="https://github.com/raj-kiran-p/regex_engine/issues">Request Feature</a>
+    <a href="https://github.com/Ashwin-Rajeev/pico/issues">Request Feature</a>
   </p>
 </p>
 
