@@ -1,3 +1,7 @@
+/**
+ * Constant values.
+ * @const
+ */
 const TEXT_DOC_MIME_TYPE = "text/plain;charset=utf-32";
 const TEXT_FILE_EXTENSION = ".txt";
 
