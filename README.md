@@ -52,15 +52,21 @@ Keyborad shortcuts are also implemented for the ease of the use.
 
 ### Keyboard Shortcuts
 
-### Select a text and highlight
+#### Select a text and highlight
 - Default : `Ctrl+Shift+A`
 - Mac     : `Command+Shift+A`
-### Save data as a file 
+
+#### Save data as a file 
 - Default : `Ctrl+Shift+S`
 - Mac     : `Command+Shift+S`
-### Clear all selection
+
+#### Clear all selections
 - Default : `Ctrl+Shift+X`
 - Mac     : `Command+Shift+X`
+
+#### Clear random selections
+- Default : `Ctrl+Shift+Z`
+- Mac     : `Command+Shift+Z`
 
 ### Supported File Types
 
@@ -103,8 +109,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Email : [ashwinrajeev916@gmail.com](ashwinrajeev916@gmail.com)   
-GitHub : [https://github.com/Ashwin-Rajeev](https://github.com/Ashwin-Rajeev)   
+Email   : [ashwinrajeev916@gmail.com](ashwinrajeev916@gmail.com)   
+GitHub  : [https://github.com/Ashwin-Rajeev](https://github.com/Ashwin-Rajeev)   
 Website : [https://ashwinrajeev.com](https://ashwinrajeev.com)
 
 
