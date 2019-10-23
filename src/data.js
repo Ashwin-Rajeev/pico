@@ -92,11 +92,11 @@ function saveTextAsFile(data) {
   });
 }
 
-function formatData(data){
-  var formattedData = ""
-  for(var key in data) {
+function formatData(data) {
+  var formattedData = "";
+  for (var key in data) {
     var value = data[key];
-    formattedData = formattedData + "\r\n" +value
+    formattedData = formattedData + "\r\n" + value;
   }
-  return formattedData
+  return formattedData;
 }

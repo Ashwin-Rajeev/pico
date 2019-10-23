@@ -1,26 +1,25 @@
 function saveToLocal(data, id) {
-  getFromLocal(function (localData) {
+  getFromLocal(function(localData) {
     if (localData) {
-      // var newData = localData.concat("\r\n", data);
-      localData[id] = data
-      console.log(localData)
+      localData[id] = data;
+      console.log(localData);
       chrome.storage.local.set(
         {
           data: localData
         },
-        function () {
+        function() {
           console.log("Value is set to a: " + data);
         }
       );
     } else {
-      var dict = {}
-      dict[id] = data
-      console.log(dict)
+      var dict = {};
+      dict[id] = data;
+      console.log(dict);
       chrome.storage.local.set(
         {
           data: dict
         },
-        function () {
+        function() {
           console.log("Value is set to b: " + data);
         }
       );
@@ -34,7 +33,7 @@ function destroyClickedElement(event) {
 
 function getFromLocal(retData) {
   var localData = "";
-  chrome.storage.local.get(["data"], function (result) {
+  chrome.storage.local.get(["data"], function(result) {
     localData = result.data;
     return retData(localData);
   });
@@ -45,13 +44,14 @@ function clearSelectionHighlightColor() {
   var index = 0,
     length = elems.length;
   for (; index < length; index++) {
-    elems[index].removeAttribute("style");
-    elems[index].removeAttribute("id");
+    var data = elems[index].innerHTML;
+    elems[index].insertAdjacentHTML("beforebegin", data);
+    elems[index].parentNode.removeChild(elems[index]);
   }
 }
 
 function clearLocalStorage(key) {
-  chrome.storage.local.remove([key], function () {
+  chrome.storage.local.remove([key], function() {
     var error = chrome.runtime.lastError;
     if (error) {
       console.error(error);
@@ -61,14 +61,14 @@ function clearLocalStorage(key) {
 
 function getFileTypeFromLocal(retData) {
   var localData = "";
-  chrome.storage.local.get(["type"], function (result) {
+  chrome.storage.local.get(["type"], function(result) {
     localData = result.type;
     return retData(localData);
   });
 }
 
 function typeBinder(type) {
-  getFileTypeFromLocal(function (localData) {
+  getFileTypeFromLocal(function(localData) {
     if (localData === "txt") {
       return type(TEXT_DOC_MIME_TYPE, TEXT_FILE_EXTENSION);
     } else if (localData === "doc") {
@@ -81,50 +81,51 @@ function typeBinder(type) {
   });
 }
 
-var val = 0
+var val = 0;
 
 function addIdToElement(selection) {
-  var host = window.location.hostname
-  var id = ""
-  console.log(selection.toString())
-  var node = selection.anchorNode
+  var host = window.location.hostname;
+  var id = "";
+  console.log(selection.toString());
+  var node = selection.focusNode;
   if (node) {
-    console.log(node.parentElement)
-    var element = node.parentElement
-    val = val + 1
-    console.log(val)
-    id = host + "-" + "pico" + "-" + val
+    console.log(node.parentElement);
+    var element = node.parentElement;
+    val = val + 1;
+    console.log(val);
+    id = host + "-" + "pico" + "-" + val;
     element.setAttribute("id", id);
   }
-  console.log("No nodes available")
-  return id
+  console.log("No nodes available");
+  return id;
 }
 
 function deleteSpecific() {
-  var selection = getSelectionText()
-  var node = selection.anchorNode
+  var selection = getSelectionText();
+  var node = selection.focusNode;
   if (node) {
-    console.log(node.parentElement)
-    var element = node.parentElement
-    var id = element.getAttribute("id");
-    deleteDataFromLocalStorage(id)
-    element.removeAttribute("style");
-    element.removeAttribute("id");
+    var parentElement = node.parentElement;
+    var id = parentElement.getAttribute("id");
+    var element = document.getElementById(id);
+    var data = parentElement.innerHTML;
+    parentElement.insertAdjacentHTML("beforebegin", data);
+    element.parentNode.removeChild(element);
   }
 }
 
 function deleteDataFromLocalStorage(key) {
-  getFromLocal(function (localData) {
+  getFromLocal(function(localData) {
     if (localData) {
-      delete localData[key]
-      console.log(localData)
+      delete localData[key];
+      console.log(localData);
       chrome.storage.local.set(
         {
           data: localData
         },
-        function () {
+        function() {
           console.log("Value is set to: " + localData);
-        });
+        }
+      );
     }
-  })
+  });
 }

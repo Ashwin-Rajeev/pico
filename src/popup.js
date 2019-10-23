@@ -36,8 +36,8 @@ function getFileType() {
       tabs[0].id,
       { message: "get_selected_file_type" },
       function(response) {
-        if(chrome.runtime.lastError) {
-          console.log("Error")
+        if (chrome.runtime.lastError) {
+          console.log("Error");
         } else {
           if (response.type === "txt") {
             file.options[1].selected = true;
