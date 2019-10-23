@@ -26,6 +26,7 @@
   * [Prerequisites](#prerequisites)
   * [Keyboard shortcuts](#Keyboard-Shortcuts)
   * [Supported file types](#Supported-file-types)
+* [Prerequisites](#Prerequisites)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -74,7 +75,7 @@ Keyborad shortcuts are also implemented for the ease of the use.
 - Text document (*.txt)
 - OpenOffice document (*.odt)
 
-### Prerequisites
+## Prerequisites
 
 Latest version of Google Chrome should be installed on your computer.
 
