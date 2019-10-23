@@ -24,7 +24,8 @@
   * [Coded With Language](#coded-with-language)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Keyboard shortcuts](#Keyboard_shortcuts)
+  * [Keyboard shortcuts](#Keyboard-Shortcuts)
+  * [Supported file types](#Supported-file-types)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -49,7 +50,7 @@ Keyborad shortcuts are also implemented for the ease of the use.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-### **Keyboard_shortcuts**
+### Keyboard Shortcuts
 
 ### Select a text and highlight
 - Default : `Ctrl+Shift+A`
@@ -61,7 +62,7 @@ Keyborad shortcuts are also implemented for the ease of the use.
 - Default : `Ctrl+Shift+X`
 - Mac     : `Command+Shift+X`
 
-## Supported file types
+### Supported File Types
 
 - MS Word document (*.doc)
 - Text document (*.txt)
