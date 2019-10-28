@@ -78,9 +78,7 @@ function saveTextAsFile(data) {
       type: mimeType
     });
     var fileNameToSaveAs = n + fileExtension;
-
     var downloadLink = document.createElement("a");
-
     downloadLink.download = fileNameToSaveAs;
     downloadLink.innerHTML = "My Hidden Link";
     window.URL = window.URL || window.webkitURL;

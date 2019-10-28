@@ -87,7 +87,7 @@ function addIdToElement(selection) {
   var host = window.location.hostname;
   var id = "";
   console.log(selection.toString());
-  var node = selection.focusNode;
+  var node = selection.anchorNode;
   if (node) {
     console.log(node.parentElement);
     var element = node.parentElement;
@@ -102,12 +102,15 @@ function addIdToElement(selection) {
 
 function deleteSpecific() {
   var selection = getSelectionText();
+  console.log(selection)
   var node = selection.focusNode;
+  console.log(selection)
   if (node) {
     var parentElement = node.parentElement;
     var id = parentElement.getAttribute("id");
     var element = document.getElementById(id);
     var data = parentElement.innerHTML;
+    console.log(parentElement)
     parentElement.insertAdjacentHTML("beforebegin", data);
     element.parentNode.removeChild(element);
   }
