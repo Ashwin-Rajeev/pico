@@ -31,7 +31,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     clearLocalStorage("data");
     clearSelectionHighlightColor();
   } else if (request.message === clearSpecific) {
-    deleteSpecific();
+    var DeletedId = deleteSpecific();
+    deleteDataFromLocalStorage(DeletedId)
   } else if (request.message === fileTypeSelection) {
     fileType(request.payload);
   } else if (request.message === getFileType) {

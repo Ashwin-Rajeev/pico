@@ -12,9 +12,8 @@ function saveToLocal(data, id) {
         }
       );
     } else {
-      var dict = {};
+      var dict = {}
       dict[id] = data;
-      console.log(dict);
       chrome.storage.local.set(
         {
           data: dict
@@ -32,10 +31,8 @@ function destroyClickedElement(event) {
 }
 
 function getFromLocal(retData) {
-  var localData = "";
   chrome.storage.local.get(["data"], function(result) {
-    localData = result.data;
-    return retData(localData);
+    return retData(result.data);
   });
 }
 
@@ -84,7 +81,7 @@ function typeBinder(type) {
 var val = 0;
 
 function addIdToElement(selection) {
-  var host = window.location.hostname;
+  var host = window.location.href;
   var id = "";
   console.log(selection.toString());
   var node = selection.anchorNode;
@@ -101,19 +98,38 @@ function addIdToElement(selection) {
 }
 
 function deleteSpecific() {
+  var id
   var selection = getSelectionText();
   console.log(selection)
   var node = selection.focusNode;
   console.log(selection)
   if (node) {
     var parentElement = node.parentElement;
-    var id = parentElement.getAttribute("id");
-    var element = document.getElementById(id);
-    var data = parentElement.innerHTML;
-    console.log(parentElement)
-    parentElement.insertAdjacentHTML("beforebegin", data);
-    element.parentNode.removeChild(element);
+    id = parentElement.getAttribute("id");
+    checkIdOnLocal(id, function(data){
+      if (id){
+        var element = document.getElementById(id);
+        var data = parentElement.innerHTML;
+        console.log(parentElement)
+        parentElement.insertAdjacentHTML("beforebegin", data);
+        element.parentNode.removeChild(element);
+      }
+    });
+    return id
   }
+  return 0
+}
+
+function checkIdOnLocal(key,retData) {
+  var flag = false
+  getFromLocal(function(localData) {
+    if (localData[key]) {
+      falg = true
+    } else {
+      flag = false
+    }
+    return retData(flag)
+  });
 }
 
 function deleteDataFromLocalStorage(key) {
